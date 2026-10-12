@@ -1,0 +1,37 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  height: 32px;
+  padding: 4px 15px 4px 4px;
+  border-radius: 14px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 13px;
+  border-radius: 10px;
+  background-color: var(--color-indigo-500);
+  color: var(--color-white);
+}
+
+/* Badge copy is 14px, one step below the regular body size. */
+.label {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+}
+
+.chevron {
+  flex: none;
+  color: var(--color-gray-500);
+  transition: color 150ms ease-in-out;
+}
+
+.badge:hover .chevron {
+  color: var(--color-gray-300);
+}

@@ -1,0 +1,82 @@
+.wrapper {
+  /* Shrink-wrap the form so the legal text wraps at the form's width, not the column's. */
+  width: fit-content;
+  max-width: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.field {
+  width: 100%;
+}
+
+.submit {
+  width: 100%;
+}
+
+.terms {
+  margin-top: 12px;
+}
+
+.termsLink {
+  color: var(--color-white);
+  font-weight: 500;
+}
+
+.termsLink:hover {
+  text-decoration: underline;
+}
+
+.feedback {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.feedback:not(:empty) {
+  margin-top: 8px;
+}
+
+.success {
+  color: var(--color-success);
+}
+
+.error {
+  color: var(--color-danger);
+}
+
+@media (min-width: 768px) {
+  .terms {
+    margin-top: 16px;
+  }
+
+  .wrapper {
+    /* min-content = input + gap + button, so the legal copy wraps at the form's width. */
+    width: min-content;
+  }
+
+  .form {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .field {
+    flex: none;
+    width: 358px;
+  }
+
+  .submit {
+    flex: none;
+    width: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .field {
+    width: 425px;
+  }
+}

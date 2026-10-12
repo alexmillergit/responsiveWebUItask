@@ -1,0 +1,98 @@
+.header {
+  position: relative;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  max-width: var(--container-max);
+  height: 88px;
+  margin: 0 auto;
+  /* Mobile: the menu button has its own 8px inset. */
+  padding: 0 8px 0 var(--header-pad-x);
+}
+
+.logo {
+  display: block;
+  flex: none;
+  color: var(--color-indigo-500);
+}
+
+.logoMark {
+  width: auto;
+  height: 32px;
+}
+
+/* Navigation and actions only exist from tablet up; below that the menu button takes over. */
+.nav,
+.actions {
+  display: none;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.actions {
+  align-items: center;
+  gap: 24px;
+  margin-left: auto;
+}
+
+.menuToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-gray-400);
+  transition: color 150ms ease-in-out;
+}
+
+.menuToggle:hover {
+  color: var(--color-white);
+  background-color: var(--color-gray-700);
+}
+
+.menuToggle:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 0;
+}
+
+@media (min-width: 768px) {
+  .inner {
+    align-items: flex-start;
+    height: 90px;
+    padding: 24px var(--header-pad-x) 0;
+  }
+
+  .logo {
+    margin-left: 1px; /* optical alignment used in the design */
+  }
+
+  .logoMark {
+    height: 40px;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    height: 42px; /* same height as the call-to-action so the links share its centre line */
+    margin-left: 40px;
+  }
+
+  .actions {
+    display: flex;
+  }
+
+  .menuToggle {
+    display: none;
+  }
+}

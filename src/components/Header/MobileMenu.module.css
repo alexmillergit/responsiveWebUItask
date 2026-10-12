@@ -1,0 +1,127 @@
+/*
+ * Motion spec (implementation notes):
+ *   open  -> slides down into view, opacity 0 -> 1, ease-in-out, 500ms
+ *   close -> slides up out of view, opacity 1 -> 0, ease-in-out, 300ms
+ * The closing timings are the base state; the open state overrides them.
+ */
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  visibility: hidden;
+  pointer-events: none;
+  /* Keep the layer rendered until the closing animation has finished. */
+  transition: visibility 0s linear var(--menu-close-duration);
+}
+
+.root[data-open='true'] {
+  visibility: visible;
+  pointer-events: auto;
+  transition-delay: 0s;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-overlay);
+  opacity: 0;
+  transition: opacity var(--menu-close-duration) var(--ease-in-out);
+}
+
+.panel {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  padding: 0 20px 24px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-xl);
+  opacity: 0;
+  transform: translateY(-100%);
+  transition:
+    opacity var(--menu-close-duration) var(--ease-in-out),
+    transform var(--menu-close-duration) var(--ease-in-out);
+}
+
+.root[data-open='true'] .overlay {
+  opacity: 1;
+  transition-duration: var(--menu-open-duration);
+}
+
+.root[data-open='true'] .panel {
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: var(--menu-open-duration);
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  margin: 16px -8px 0 0;
+}
+
+.logo {
+  width: auto;
+  height: 32px;
+  color: var(--color-indigo-600);
+}
+
+.close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-gray-400);
+  transition: color 150ms ease-in-out;
+}
+
+.close:hover {
+  color: var(--color-gray-600);
+  background-color: #f3f4f6;
+}
+
+.close:focus-visible {
+  outline: 2px solid var(--color-indigo-500);
+  outline-offset: 0;
+}
+
+.list {
+  margin-top: 18px;
+}
+
+.item {
+  display: block;
+  /* The hover background bleeds 12px past the text so it spans the panel's inner edge. */
+  margin: 0 -12px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+}
+
+.item:hover {
+  background-color: #f9fafb;
+}
+
+.cta {
+  margin-top: 22px;
+}
+
+.login {
+  margin-top: 24px;
+  color: var(--color-gray-500);
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+}
+
+.loginLink {
+  color: var(--color-gray-900);
+  font-weight: 500;
+}

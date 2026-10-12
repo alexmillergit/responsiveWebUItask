@@ -1,0 +1,128 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.inner {
+  position: relative;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 16px var(--hero-pad-x) 0;
+}
+
+.content {
+  position: relative; /* paint above the illustration where they overlap */
+  z-index: 1;
+}
+
+.title {
+  margin-top: 17px;
+}
+
+.line {
+  display: block;
+}
+
+.accent {
+  color: var(--color-accent);
+}
+
+.lead {
+  margin-top: 10px;
+}
+
+/* The trial form */
+.content > :last-child {
+  margin-top: 40px;
+}
+
+/* Mobile: the illustration sits below the copy and is cropped by the page edge, as in the design. */
+.visual {
+  width: 100%;
+  max-width: 480px;
+  margin: 48px auto 0;
+  aspect-ratio: 344 / 280;
+  overflow: hidden;
+}
+
+.illustration {
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .inner {
+    padding-top: 104px;
+    padding-bottom: 152px;
+  }
+
+  .title {
+    margin-top: 24px;
+  }
+
+  .lead {
+    margin-top: 23px;
+  }
+
+  .content > :last-child {
+    margin-top: 46px;
+  }
+
+  /* Heading and paragraph use the left half of the container; the form may run past it. */
+  .title,
+  .lead {
+    max-width: calc((100% + 2 * var(--hero-pad-x)) / 2 - var(--hero-pad-x));
+  }
+
+  /* The illustration is centred on the copy block and starts just past the container's midpoint. */
+  .visual {
+    position: absolute;
+    top: 104px;
+    bottom: 152px;
+    left: calc(50% + 16px);
+    display: flex;
+    align-items: center;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    aspect-ratio: auto;
+    overflow: visible;
+  }
+
+  .illustration {
+    flex: none;
+    width: 626px;
+    height: 624px;
+  }
+}
+
+/* A few px of slack so the paragraph breaks where the tablet design does (font metrics differ slightly). */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .lead {
+    max-width: calc(50% + 6px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .lead {
+    margin-top: 20px;
+  }
+
+  .content > :last-child {
+    margin-top: 48px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .title {
+    margin-top: 26px;
+  }
+
+  .lead {
+    margin-top: 22px;
+  }
+
+  .content > :last-child {
+    margin-top: 47px;
+  }
+}
